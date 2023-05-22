@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <h1
+      class="heading"
+    >
+      Home
+    </h1>
+  </div>
+</div>
+`;
