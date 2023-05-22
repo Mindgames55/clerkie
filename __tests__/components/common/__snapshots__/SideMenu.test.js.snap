@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SideMenu correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="logo"
+    >
+      <span />
+      <span
+        class="logo-title"
+      >
+        Clerkie Challenge
+      </span>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a
+            class="active"
+            href="/"
+          >
+            <span />
+            <span
+              class="text"
+            >
+              Home
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="item"
+            href="friends"
+          >
+            <span />
+            <span
+              class="text"
+            >
+              Friends
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
