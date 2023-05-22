@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Friend correctly 1`] = `
+<div>
+  <li
+    class="container"
+  >
+    <span
+      class="name"
+    >
+      Jhon Smith
+    </span>
+    <span
+      class="metadata"
+    >
+      <span
+        class="email"
+      >
+        email
+      </span>
+      <span>
+        5
+      </span>
+    </span>
+  </li>
+</div>
+`;
