@@ -17,7 +17,7 @@ const friendMock = [{
 export default function FriendsList({children}) {
     const [ isInitialLoad, setInitialLoad ] = useState(true);
     const friends = friendMock
-    // TODO figure out a way to avoid using magic 80px
+
     return (
         <ul className={styles.container}>
             {isInitialLoad && children}
