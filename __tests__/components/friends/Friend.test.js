@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Friend from '../../../components/friends/Friend';
+import Friend from '@/components/friends/Friend';
 import friendMock from './friend.json'
 
 it('renders Friend correctly', () => {

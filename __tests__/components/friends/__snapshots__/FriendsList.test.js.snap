@@ -26,9 +26,7 @@ exports[`renders FriendsList correctly 1`] = `
         >
           email@gmail.com
         </span>
-        <span>
-          (555) 456 4567
-        </span>
+        <span />
       </span>
     </li>
   </ul>

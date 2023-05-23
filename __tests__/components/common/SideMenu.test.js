@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import SideMenu from '../../../components/common/SideMenu';
+import SideMenu from '@/components/common/SideMenu';
 
 jest.mock('next/navigation', () => ({
     useSelectedLayoutSegment: jest.fn(), // return undefined for base route

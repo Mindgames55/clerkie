@@ -1,6 +1,6 @@
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { render, screen } from '@testing-library/react';
-import MenuItem from '../../../components/common/MenuItem';
+import MenuItem from '@/components/common/MenuItem';
 
 jest.mock('next/navigation', () => ({
     useSelectedLayoutSegment: jest.fn(), // return undefined for base route

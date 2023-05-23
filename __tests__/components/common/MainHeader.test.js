@@ -1,6 +1,6 @@
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { render, screen } from '@testing-library/react';
-import MainHeader from '../../../components/common/MainHeader';
+import MainHeader from '@/components/common/MainHeader';
 
 jest.mock('next/navigation', () => ({
     useSelectedLayoutSegment: jest.fn(), // return undefined for base route

@@ -15,7 +15,7 @@ export default function Friend({friend}) {
             {friend.status !== 'default' && <span className={styles[friend.status]}>{STATUS_TO_COPY[friend.status]}</span>}
             <span className={styles.metadata}>
                 <span className={styles.email}>{friend.email}</span>
-                <span>{friend['phone number']}</span>
+                <span>{friend.phone_number}</span>
             </span>
         </li>
     )
