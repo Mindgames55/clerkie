@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   // to support caching the data at the API level
   const fileContents = await fs.readFile(dataDir + '/MOCK_DATA.json', 'utf8');
   
-  const {page = DEFAULT_PAGE, status, limit = LIMIT_PER_PAGE} = req.query;
+  const {page = DEFAULT_PAGE, status, limit = DEFAULT_LIMIT_PER_PAGE} = req.query;
   // the boundary within the data between already loaded and not loaded yet
   const start = page * limit;
   const data = JSON.parse(fileContents).slice(start);
