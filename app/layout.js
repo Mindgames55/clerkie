@@ -1,3 +1,4 @@
+import {FriendsProvider} from './friends-provider'
 import './globals.css'
 import styles from './layout.module.css'
 import { Inter } from 'next/font/google'
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
           <SideMenu />
           <main className={styles.main}>
             <MainHeader />
-            {children}
+            <FriendsProvider>{children}</FriendsProvider>
           </main>
         </div>
       </body>

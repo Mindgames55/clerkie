@@ -51,3 +51,9 @@
     background-color: #ABABAB;
     vertical-align: middle;
 }
+
+
+/* just for debugging client component */
+.black {
+    background-color: blueviolet;
+}
