@@ -1,9 +1,10 @@
 import path from 'path'
 import { promises as fs } from 'fs';
 import Friend from './Friend';
-
-const FIRST_LOAD_LIMIT = 15; // first load number of results
-const FIRST_LOAD_START = 0; // start from the beginning of the data
+import {
+    DEFAULT_LIMIT_PER_PAGE as FIRST_LOAD_LIMIT,
+    DEFAULT_PAGE as FIRST_LOAD_START
+} from '../../pages/api/friends'
 
 async function getFriendsData() {
     const dataDir = path.join(process.cwd(), 'json');

@@ -1,27 +1,34 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './FriendsList.module.css'
+import loaderStyles from '../../app/friends/loading.module.css'
 import Friend from './Friend';
-
-// TODO use real data
-const friendMock = [{
-    first_name: 'Jhon',
-    last_name: 'Smith',
-    email: 'email@gmail.com',
-    'phone number': '(555) 456 4567',
-    status: 'close',
-    id: '1'
-}]
+import PlaceHolder from '../../public/contact_placeholder.svg'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
+import useFriends from '../hooks/useFriends';
 
 export default function FriendsList({children}) {
-    const [ isInitialLoad, setInitialLoad ] = useState(true);
-    const friends = friendMock
+    const targetRef = useRef(null)
+    const isIntersecting = useIntersectionObserver(targetRef?.current);
+    const {friends, getFriends, loading } = useFriends()
+    const page = useRef(1)
+
+    const shouldLoadMore = isIntersecting && !loading;
+
+    if (shouldLoadMore) {
+        getFriends(page.current);
+        page.current++;
+    }
 
     return (
         <ul className={styles.container}>
-            {isInitialLoad && children}
+            {/* TODO https://react.dev/reference/react/useEffect#displaying-different-content-on-the-server-and-the-client */}
+            {!friends.length && children}
             {friends.map(friend => <Friend friend={friend} key={friend.id}/>)}
+            <div ref={targetRef}>
+                <PlaceHolder className={loaderStyles.loader}/>
+            </div>
         </ul>
     )
 }
