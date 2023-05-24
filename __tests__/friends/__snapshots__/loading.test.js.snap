@@ -2,8 +2,36 @@
 
 exports[`renders Loading correctly 1`] = `
 <div>
-  <span
+  <div
     class="container"
-  />
+  >
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+    <span
+      class="loader"
+    />
+  </div>
 </div>
 `;
