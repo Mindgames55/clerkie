@@ -15,7 +15,6 @@ const pro = () => new Promise((res, rej) => {
 export default function Friends() {
     return (
         <div className={styles.container}>
-            <Filter />
             <FriendsList>
                 <ServerFriendsList />
             </FriendsList>

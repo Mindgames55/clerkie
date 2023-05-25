@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useRef } from 'react';
-import styles from './FriendsList.module.css'
 import loaderStyles from '../../app/friends/loading.module.css'
 import Friend from './Friend';
 import PlaceHolder from '../../public/contact_placeholder.svg'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import useFriends from '../hooks/useFriends';
+import Filter from './filter/Filter';
 
 export default function FriendsList({children}) {
     const targetRef = useRef(null)
@@ -22,13 +22,16 @@ export default function FriendsList({children}) {
     }
 
     return (
-        <ul className={styles.container}>
-            {/* TODO https://react.dev/reference/react/useEffect#displaying-different-content-on-the-server-and-the-client */}
-            {!friends.length && children}
-            {friends.map(friend => <Friend friend={friend} key={friend.id}/>)}
-            <div ref={targetRef}>
-                <PlaceHolder className={loaderStyles.loader}/>
-            </div>
-        </ul>
+        <div>
+            <Filter />
+            <ul>
+                {/* TODO https://react.dev/reference/react/useEffect#displaying-different-content-on-the-server-and-the-client */}
+                {!friends.length && children}
+                {friends.map(friend => <Friend friend={friend} key={friend.id}/>)}
+                <div ref={targetRef}>
+                    <PlaceHolder className={loaderStyles.loader}/>
+                </div>
+            </ul>
+        </div>
     )
 }

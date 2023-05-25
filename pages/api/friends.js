@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   // to support caching the data at the API level
   const fileContents = await fs.readFile(dataDir + '/MOCK_DATA.json', 'utf8');
   
-  const {page = DEFAULT_PAGE, status, limit = DEFAULT_LIMIT_PER_PAGE} = req.query;
+  const {page = DEFAULT_PAGE, status, limit = DEFAULT_LIMIT_PER_PAGE, latency = 0} = req.query;
   // coercing to numbers to apply math operators on them
   const pageNumber = Number(page);
   const limitNumber = Number(limit)
@@ -22,8 +22,10 @@ export default async function handler(req, res) {
   const data = JSON.parse(fileContents).slice(start);
 
   const filteredData = filterData(status, data);
-
-  res.status(200).json(filteredData.slice(0, limitNumber));
+  // for testing the app client request with some latency, should be removed in production code
+  setTimeout(() => {
+    res.status(200).json(filteredData.slice(0, limitNumber));
+  }, latency)
 }
 // TODO for now you can only filter exclusive values of status, support multiple options
 /**

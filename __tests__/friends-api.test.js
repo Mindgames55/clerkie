@@ -2,6 +2,7 @@ import { createMocks } from 'node-mocks-http';
 import handleFriend from '../pages/api/friends'
 import data from '../json/MOCK_DATA';
 
+jest.useFakeTimers(); // not needed in prod code, but I added latency fro debugging usin setTimeout
 describe('/api/friend', () => {
     test('returns an array of the first 2 friends', async () => {
         const expectedData = data.slice(0, 2);
@@ -12,6 +13,7 @@ describe('/api/friend', () => {
         });
 
         await handleFriend(req, res);
+        jest.runAllTimers();
 
         expect(res._getStatusCode()).toBe(200);
         const receivedData = JSON.parse(res._getData());
@@ -31,6 +33,8 @@ describe('/api/friend', () => {
         });
 
         await handleFriend(req, res);
+
+        jest.runAllTimers();
 
         expect(res._getStatusCode()).toBe(200);
         const receivedData = JSON.parse(res._getData());

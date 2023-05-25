@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export const BASE_API_URL = '/api/friends';
 
@@ -10,7 +11,10 @@ export const fetcher = async (url) => {
 export default function useFriends() {
     const [ friends, setFriends ] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    
+    // this is just for debugging the application with latency qp
+    const searchParams = useSearchParams();
+    const latency = searchParams.get('latency');
     /* 
         this useEffect hook adds to the state the same friends as the server component (initial friends)
         to have available that in the FE to be able to filter whatever is already rendered
@@ -33,8 +37,8 @@ export default function useFriends() {
     }, [])
 
     const getFriends = async (page) => {
-        setLoading(true)
-        const url = `${BASE_API_URL}?page=${page}`
+        setLoading(true);
+        const url = latency ? `${BASE_API_URL}?latency=${latency}&page=${page}` : `${BASE_API_URL}?page=${page}`
         fetcher(url)
             .then(newFriends => {
                 setFriends([...friends, ...newFriends])
