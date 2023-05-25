@@ -1,0 +1,4 @@
+.clear {
+    composes: button from './Filter.module.css';
+    font-weight: 600;
+}

@@ -1,6 +1,6 @@
 import styles from './Friend.module.css'
 
-const STATUS_TO_COPY = {
+export const STATUS_TO_COPY = {
     close: 'Close Friends',
     'super-close': 'Super Close Friends'
 }

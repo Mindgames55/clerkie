@@ -7,9 +7,9 @@
     padding: 8px 10px;
 }
 
-.active {
+.button-active {
     composes: item;
-
+    color: white;
     background-color: #424242;
 }
 

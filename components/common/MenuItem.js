@@ -11,7 +11,7 @@ export default function MenuItem({title, href, children}) {
     return (
         <li>
             <Link href={href}
-                  className={isActive ? styles.active : styles.item}
+                  className={isActive ? styles['button-active'] : styles.item}
             >
                     {children}
                     <span className={styles.text}>{title}</span>

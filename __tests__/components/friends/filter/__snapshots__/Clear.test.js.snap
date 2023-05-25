@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Clear button correctly 1`] = `
+<div>
+  <button
+    class="clear"
+  >
+    Clear all
+  </button>
+</div>
+`;

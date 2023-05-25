@@ -28,3 +28,12 @@ a {
 ul {
   list-style: none;
 }
+
+.hidden {
+  display: none !important;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}

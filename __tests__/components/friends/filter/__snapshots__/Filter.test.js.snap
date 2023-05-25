@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Filter correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="controls"
+    >
+      <button
+        aria-label="filter by status"
+        class="filter"
+      >
+        <span />
+      </button>
+      <span
+        class="separator"
+      >
+        |
+      </span>
+      <button
+        class="clear"
+      >
+        Clear all
+      </button>
+    </div>
+    <div
+      class="container hidden"
+    >
+      <header
+        class="header"
+      >
+        <div
+          class="box"
+        >
+          <button
+            class="clear"
+          >
+            Clear all
+          </button>
+        </div>
+        <div
+          class="box"
+        >
+          <span
+            class="title"
+          >
+            Filter
+          </span>
+        </div>
+        <div
+          class="box"
+        >
+          <button
+            aria-label="close"
+          >
+            <span />
+          </button>
+        </div>
+      </header>
+      <div
+        class="filter-container"
+      >
+        <p
+          class="status-title"
+        >
+          Friend Status
+        </p>
+        <ul
+          class="options"
+        >
+          <li
+            class="option"
+          >
+            <span
+              class="option-copy"
+            >
+              Close Friends
+            </span>
+            <input
+              class="checkbox"
+              type="checkbox"
+            />
+          </li>
+          <li
+            class="option"
+          >
+            <span
+              class="option-copy"
+            >
+              Super Close Friends
+            </span>
+            <input
+              class="checkbox"
+              type="checkbox"
+            />
+          </li>
+        </ul>
+        <button
+          class="apply"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

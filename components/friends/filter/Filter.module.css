@@ -1,0 +1,33 @@
+.container {
+    position: relative;
+}
+
+.controls {
+    display: flex;
+    margin-top: 46px;
+    margin-bottom: 25px;
+}
+
+.disable {
+    color: #D7D7D7
+}
+
+.button {
+    border-radius: 30px;
+    background-color: transparent;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+.filter {
+    composes: button;
+    border: 1px solid #ABABAB;
+}
+
+.separator {
+    composes: disable;
+    margin-left: 15px;
+    align-self: center;
+}
