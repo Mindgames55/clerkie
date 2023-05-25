@@ -1,4 +1,5 @@
 'use client'
+// not currently in use, confirmed for the scope of the project is not needed
 import { createContext, useReducer } from 'react';
 
 export const FriendsContext = createContext(null);
