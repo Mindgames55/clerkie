@@ -1,7 +1,7 @@
 import path from 'path'
 import { promises as fs } from 'fs';
 
-export const DEFAULT_LIMIT_PER_PAGE = 10;
+export const DEFAULT_LIMIT_PER_PAGE = 5;
 export const DEFAULT_PAGE = 0;
 const STATUS_SUPPORTED_VALUES = {
   close: 'close',
@@ -19,12 +19,11 @@ export default async function handler(req, res) {
   const limitNumber = Number(limit)
   // the boundary within the data between already loaded and not loaded yet
   const start = pageNumber * limitNumber;
-  const data = JSON.parse(fileContents).slice(start);
-
+  const data = JSON.parse(fileContents);
   const filteredData = filterData(status, data);
   // for testing the app client request with some latency, should be removed in production code
   setTimeout(() => {
-    res.status(200).json(filteredData.slice(0, limitNumber));
+    res.status(200).json(filteredData.slice(start, start + limitNumber));
   }, latency)
 }
 // TODO for now you can only filter exclusive values of status, support multiple options

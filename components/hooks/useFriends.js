@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import getQueryParamString from '@/utils/get-query-param-string';
 
 export const BASE_API_URL = '/api/friends';
 
@@ -36,9 +37,13 @@ export default function useFriends() {
         }
     }, [])
 
-    const getFriends = async (page) => {
+    const getFriends = async (page, filters) => {
         setLoading(true);
-        const url = latency ? `${BASE_API_URL}?latency=${latency}&page=${page}` : `${BASE_API_URL}?page=${page}`
+  
+        const friendsQPs = getFriendsQPs(page, filters);
+        const url = latency
+                    ? `${BASE_API_URL}${getQueryParamString(friendsQPs)}&latency=${latency}`
+                    : BASE_API_URL + getQueryParamString(friendsQPs)
         fetcher(url)
             .then(newFriends => {
                 setFriends([...friends, ...newFriends])
@@ -55,4 +60,23 @@ export default function useFriends() {
         loading,
         getFriends
     };
+}
+/**
+ * Returns an array of QPs containing the page and applied filters
+ * @param {Number} page 
+ * @param {Array} filters - the possible filters, the function filters the incative ones
+ * @returns {Array} - an array of query params standardize in the form {name, value}
+ */
+function getFriendsQPs(page, filters) {
+    const appliedFilters = filters.filter(filter => filter.applied);
+    const filterQpMap = appliedFilters.map(filter => ({
+        name: 'status',
+        value: filter.value
+    }))
+    const pageQpMap = {
+        name: 'page',
+        value: page
+    }
+
+    return [...filterQpMap, pageQpMap];
 }
