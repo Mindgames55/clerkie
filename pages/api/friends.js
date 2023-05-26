@@ -28,7 +28,6 @@ export default async function handler(req, res) {
     done: !areThereResultsLeft
   });
 }
-// TODO for now you can only filter exclusive values of status, support multiple options
 /**
  * 
  * @param {String} status - the filter criteria
