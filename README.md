@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the Clerckie Challenge.
 
 ## Getting Started
 
@@ -14,21 +14,26 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## The app
 
-To learn more about Next.js, take a look at the following resources:
+The app is deployed on [Vercel](https://clerkie-8ojx1vxgj-mindgames55.vercel.app/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Core functionality
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Show a list of first contacts using server components
+- Load more contacts in an infinite scroller using client components
+- User can filter the data already shown and when loading more the loaded data is already filtered according to the same criteria
+- User can clear all filters which will show **all** the results, and clear the results loaded after applied the first filter (since the FE only requested for filtered data now upon clearing filters we need to request the same data without any filtering)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Next Steps (TODOs)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Use more semantic HTML
+- Handle focus on user interactions (open filter dropdown - close filter dropdown)
+- Incorporate relevant metatags and manipulate the document title according to the route segment
+- Incorporate state management lib or wrap in context to preserve state between the routes
+- Standardize styling (incorporating a design system)
+- Add unit tests and E2E testing
+
