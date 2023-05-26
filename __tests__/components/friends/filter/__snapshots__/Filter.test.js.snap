@@ -45,9 +45,6 @@ exports[`renders Filter correctly 1`] = `
           >
             Clear all
           </button>
-          <span>
-            3
-          </span>
         </div>
         <div
           class="box"
