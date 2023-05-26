@@ -56,10 +56,7 @@ export default function useFriends() {
      * @param {Number} end - the index that will mark the end of the sliced array
      */
     const sliceFriends = (end) => {
-        if (end !== friends.length) {
-            // means there are more results
-            setDone(false)
-        }
+        setDone(false)
         setFriends(friends.slice(0,end+1))
     }
 
