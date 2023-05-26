@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 import loaderStyles from '../../app/friends/loading.module.css'
 import Friend from './Friend';
-import PlaceHolder from '../../public/contact_placeholder.svg'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import useFriends from '../hooks/useFriends';
 import Filter from './filter/Filter';
@@ -68,9 +68,16 @@ export default function FriendsList({children}) {
                 {!friends.length && children}
                 {visibleFriends.map(friend => <Friend friend={friend} key={friend.id}/>)}
                 {/* if unmounted the useEffect hook on useIntersectionObserver will run and disconnect the observer */}
-                {!done && <div ref={targetRef}>
-                    <PlaceHolder className={loaderStyles.loader}/>
-                </div>}
+                {!done &&
+                    <div ref={targetRef} className={loaderStyles['loader-container']}>
+                        <Image
+                            className={loaderStyles.image}
+                            src="/contact_placeholder.svg"
+                            width={1050}
+                            height={114}
+                            alt="Loading"
+                        />
+                    </div>}
             </ul>
         </div>
     )

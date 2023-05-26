@@ -1,5 +1,5 @@
-import PlaceHolder from '../../public/contact_placeholder.svg'
 import styles from './page.module.css'
+import Image from 'next/image';
 import Hamburger from '../../public/hamburger.svg'
 import filterStyles from '../../components/friends/filter/Filter.module.css'
 import clearStyles from '../../components/friends/filter/Clear.module.css'
@@ -26,7 +26,15 @@ export default function Loading() {
             <FilterLoad />
             {Array(9).fill('unused').map((el, idx) => (
                     // acceptable to use the id since these components will never change order
-                    <PlaceHolder key={idx} className={loaderStyles.loader}/>
+                    <div key={idx} className={loaderStyles['loader-container']}>
+                        <Image
+                            className={loaderStyles.image}
+                            src="/contact_placeholder.svg"
+                            width={1050}
+                            height={114}
+                            alt="Loading"
+                        />
+                    </div>
             ))}
         </div>
         

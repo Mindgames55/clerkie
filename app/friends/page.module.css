@@ -2,5 +2,6 @@
     margin: auto;
     height: calc(100vh - var(--header-height));
     overflow: auto;
-    padding: 0 312px
+    padding: 0 20px;
+    max-width: 1050px;
 }
