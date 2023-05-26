@@ -51,11 +51,20 @@ export default function useFriends() {
             });
     }
 
+    /**
+     * This method exposes a way to strip friends. 
+     * @param {Number} end - the index that will mark the end of the sliced array
+     */
+    const sliceFriends = (end) => {
+        setFriends(friends.slice(0,end+1))
+    }
+
     return {
         friends,
         loading,
         done,
-        getFriends
+        getFriends,
+        sliceFriends
     };
 }
 /**

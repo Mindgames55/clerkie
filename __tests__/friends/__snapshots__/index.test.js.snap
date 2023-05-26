@@ -118,9 +118,19 @@ exports[`Friends renders correctly 1`] = `
         </div>
       </div>
       <ul>
-        <div>
-          <span
-            class="loader"
+        <div
+          class="loader-container"
+        >
+          <img
+            alt="Loading"
+            class="image"
+            data-nimg="1"
+            decoding="async"
+            height="114"
+            loading="lazy"
+            src="/contact_placeholder.svg"
+            style="color: transparent;"
+            width="1050"
           />
         </div>
       </ul>

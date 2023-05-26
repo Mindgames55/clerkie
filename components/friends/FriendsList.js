@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
+import styles from './FriendsList.module.css'
 import loaderStyles from '../../app/friends/loading.module.css'
 import Friend from './Friend';
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
@@ -24,9 +25,10 @@ const initialFilters = [
 export default function FriendsList({children}) {
     const targetRef = useRef(null)
     const isIntersecting = useIntersectionObserver(targetRef?.current);
-    const {friends, getFriends, loading, done } = useFriends()
+    const {friends, getFriends, loading, done, sliceFriends } = useFriends()
     const page = useRef(1)
     const [filters, setFilters] = useState(initialFilters);
+    const noFilterLoadedFriendsMark = useRef(0);
 
     // derived values from state, needed work would be done here  and passed
     // to child components that need then to avoid re-computing in those components 
@@ -49,11 +51,17 @@ export default function FriendsList({children}) {
             ...filter,
             applied: false
         })))
+        // we also want to strip all the loaded data with a particular filter
+        // because upon clearing all filters we want to be able the FE "recovers" the lost data when filtering
+        sliceFriends(noFilterLoadedFriendsMark)
     }
 
     if (shouldLoadMore) {
         getFriends(page.current, filters);
         page.current++;
+        if (!isAnyFilterApplied) {
+            noFilterLoadedFriendsMark.current = friends.length
+        }
     }
 
     return (
@@ -68,16 +76,18 @@ export default function FriendsList({children}) {
                 {!friends.length && children}
                 {visibleFriends.map(friend => <Friend friend={friend} key={friend.id}/>)}
                 {/* if unmounted the useEffect hook on useIntersectionObserver will run and disconnect the observer */}
-                {!done &&
-                    <div ref={targetRef} className={loaderStyles['loader-container']}>
-                        <Image
-                            className={loaderStyles.image}
-                            src="/contact_placeholder.svg"
-                            width={1050}
-                            height={114}
-                            alt="Loading"
-                        />
-                    </div>}
+                {!done
+                   ? <div ref={targetRef} className={loaderStyles['loader-container']}>
+                            <Image
+                                className={loaderStyles.image}
+                                src="/contact_placeholder.svg"
+                                width={1050}
+                                height={114}
+                                alt="Loading"
+                            />
+                    </div>
+                    : <p className={styles['no-results']}>No more results</p>
+                }
             </ul>
         </div>
     )
