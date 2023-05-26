@@ -56,7 +56,8 @@
 
 .box:last-child  > button {
     margin-left: auto;
-    margin-right: 25px;
+    margin-right: 5px;
+    padding: 20px
 }
 
 .status-title {

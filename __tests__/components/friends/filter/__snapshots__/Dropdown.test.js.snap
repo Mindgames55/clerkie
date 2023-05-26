@@ -12,14 +12,10 @@ exports[`renders Dropdown correctly 1`] = `
         class="box"
       >
         <button
-          class="clear"
-          disabled=""
+          class="clear-blue"
         >
           Clear all
         </button>
-        <span>
-          3
-        </span>
       </div>
       <div
         class="box"
@@ -61,6 +57,7 @@ exports[`renders Dropdown correctly 1`] = `
             Close Friends
           </label>
           <input
+            checked=""
             class="checkbox"
             id="close"
             name="close"
@@ -123,9 +120,6 @@ exports[`renders Filter correctly 1`] = `
           >
             Clear all
           </button>
-          <span>
-            3
-          </span>
         </div>
         <div
           class="box"

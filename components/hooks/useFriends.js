@@ -11,6 +11,7 @@ export const fetcher = async (url) => {
 export default function useFriends() {
     const [ friends, setFriends ] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [done, setDone] = useState(false);
     
     /* 
         this useEffect hook adds to the state the same friends as the server component (initial friends)
@@ -20,7 +21,7 @@ export default function useFriends() {
         let ignore = false;
 
         async function fetchFriends() {
-            const friends =  await fetcher(BASE_API_URL);
+            const {friends} =  await fetcher(BASE_API_URL);
             if (!ignore) {
                 setFriends(f => [...f, ...friends])
             }
@@ -39,9 +40,10 @@ export default function useFriends() {
         const friendsQPs = getFriendsQPs(page, filters);
 
         fetcher(BASE_API_URL + getQueryParamString(friendsQPs))
-            .then(newFriends => {
+            .then(({friends: newFriends, done}) => {
                 setFriends([...friends, ...newFriends])
                 setLoading(false)
+                setDone(done)
             })
             .catch(() => {
                 // no-op
@@ -52,6 +54,7 @@ export default function useFriends() {
     return {
         friends,
         loading,
+        done,
         getFriends
     };
 }

@@ -2,3 +2,8 @@
     composes: button from './Filter.module.css';
     font-weight: 600;
 }
+
+.clear-blue {
+    composes: clear;
+    color: #3399FF;
+}

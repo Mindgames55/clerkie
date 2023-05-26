@@ -3,8 +3,11 @@ import Dropdown from '@/components/friends/filter/Dropdown'
 import {props as filterProps} from './Filter.test'
 
 const props = {
-    statuses: ['close', 'super-close'],
     isVisible: true,
+    filtersChecked: {
+        close: true
+    },
+    handleCheckboxChange: jest.fn(),
     ...filterProps
 }
 

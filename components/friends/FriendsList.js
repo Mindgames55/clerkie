@@ -24,7 +24,7 @@ const initialFilters = [
 export default function FriendsList({children}) {
     const targetRef = useRef(null)
     const isIntersecting = useIntersectionObserver(targetRef?.current);
-    const {friends, getFriends, loading } = useFriends()
+    const {friends, getFriends, loading, done } = useFriends()
     const page = useRef(1)
     const [filters, setFilters] = useState(initialFilters);
 
@@ -67,9 +67,10 @@ export default function FriendsList({children}) {
                 {/* TODO https://react.dev/reference/react/useEffect#displaying-different-content-on-the-server-and-the-client */}
                 {!friends.length && children}
                 {visibleFriends.map(friend => <Friend friend={friend} key={friend.id}/>)}
-                <div ref={targetRef}>
+                {/* if unmounted the useEffect hook on useIntersectionObserver will run and disconnect the observer */}
+                {!done && <div ref={targetRef}>
                     <PlaceHolder className={loaderStyles.loader}/>
-                </div>
+                </div>}
             </ul>
         </div>
     )

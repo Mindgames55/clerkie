@@ -19,9 +19,14 @@ export default async function handler(req, res) {
   const limitNumber = Number(limit)
   // the boundary within the data between already loaded and not loaded yet
   const start = pageNumber * limitNumber;
+  const end = start + limitNumber;
   const data = JSON.parse(fileContents);
+  const areThereResultsLeft = end < data.length;
   const filteredData = filterData(status, data);
-  res.status(200).json(filteredData.slice(start, start + limitNumber));
+  res.status(200).json({
+    friends: filteredData.slice(start, end),
+    done: !areThereResultsLeft
+  });
 }
 // TODO for now you can only filter exclusive values of status, support multiple options
 /**

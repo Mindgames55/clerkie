@@ -6,50 +6,24 @@ import Close from '../../../public/close.svg';
 import { HIDDEN_CLASSNAME } from '@/constants';
 import { STATUS_TO_COPY } from '../Friend';
 
-/**
- * This function gets the initial state for the checkboxes.
- * @param {Array} filters
- * @returns {Object} {close: true|false, super-close:true|false}
- */
-function getInitialFiltersToChecked(filters) {
-    return filters.reduce((acc, filter) => {
-        acc[filter.value] = filter.applied;
-        return acc;
-    }, {})
-}
-
-
-export default function Dropdown({filters, isVisible, submitFilters, numberOfActiveFilters, toggleVisibility}) {
-    /*
-     need to maintain local state for checked values as the user can select/deselect without
-     triggering a filter. Filter is triggered when user click "Apply"
-    */
-    const [filtersChecked, setFiltersChecked] = useState(() => getInitialFiltersToChecked(filters)) // passing a f to avoid re-computing on re-renders
-   
-    const isAnyCheckboxChecked = Object.keys(filtersChecked).some(filter => filtersChecked[filter])
-
-    function handleChange({target}) {
-        setFiltersChecked({
-            ...filtersChecked,
-            [target.name]: !filtersChecked[target.name]
-        })
-    }
-
-    function clearFilters() {
-        const newFiltersChecked = Object.keys(filtersChecked).reduce((acc, filterChecked) => {
-            acc[filterChecked] = false;
-            return acc;
-        }, {})
-        setFiltersChecked(newFiltersChecked)
-    }
+export default function Dropdown({
+    filters,
+    isVisible,
+    submitFilters,
+    numberOfActiveFilters,
+    toggleVisibility,
+    filtersChecked,
+    clearCheckboxes,
+    handleCheckboxChange
+}) {
     
+    const isAnyCheckboxChecked = Object.keys(filtersChecked).some(filter => filtersChecked[filter])
     const dropdownClassName = `${styles.container} ${!isVisible ? HIDDEN_CLASSNAME : ''}`;
     return (
         <div className={dropdownClassName}>
             <header className={styles.header}>
                 <div className={styles.box}>
-                    <Clear handleClick={clearFilters} isDisabled={!isAnyCheckboxChecked}/>
-                    {numberOfActiveFilters > 0 && <span>{numberOfActiveFilters}</span>}
+                    <Clear handleClick={clearCheckboxes} isDisabled={!isAnyCheckboxChecked} isBlue={true} />
                 </div>
                 <div className={styles.box}>
                     <span className={styles.title}>Filter</span>
@@ -66,13 +40,13 @@ export default function Dropdown({filters, isVisible, submitFilters, numberOfAct
                     {filters.map(({value, applied}) => (
                         <li key={value} className={styles.option}>
                             <label className={styles['option-copy']} htmlFor={value}>{STATUS_TO_COPY[value]}</label>
-                            <input className={styles.checkbox} type="checkbox" id={value} name={value} checked={filtersChecked[value]} onChange={handleChange} />
+                            <input className={styles.checkbox} type="checkbox" id={value} name={value} checked={filtersChecked[value]} onChange={handleCheckboxChange} />
                         </li>
                     ))}
                 </ul>
                 <button className={styles.apply}
                         onClick={() => {
-                                submitFilters(filtersChecked)
+                                submitFilters()
                                 toggleVisibility()
                             }}>
                             Apply

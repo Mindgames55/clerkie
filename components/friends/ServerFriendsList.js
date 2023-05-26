@@ -26,7 +26,7 @@ async function getFriendsData() {
     const data = JSON.parse(fileContents).slice(FIRST_LOAD_START, FIRST_LOAD_LIMIT);
 
     // uncomment to test the loading screen
-    // await delay(100000)
+    // await delay(5000)
 
     return data;
 }
