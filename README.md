@@ -26,10 +26,13 @@ The app is deployed on [Vercel](https://clerkie-8ojx1vxgj-mindgames55.vercel.app
 - Load more contacts in an infinite scroller using client components
 - User can filter the data already shown and when loading more the loaded data is already filtered according to the same criteria
 - User can clear all filters which will show **all** the results, and clear the results loaded after applied the first filter (since the FE only requested for filtered data now upon clearing filters we need to request the same data without any filtering)
+- If when filtering data we reach the end of the results, the infinite scroller gets tear down. Clicking clear all filters will reconnect so the user can see the totality of the data
+- Added an extra indicator (not in the designs) when there is no more data to load
 
 
 ## Next Steps (TODOs)
 
+- Add error handling
 - Use more semantic HTML
 - Handle focus on user interactions (open filter dropdown - close filter dropdown)
 - Incorporate relevant metatags and manipulate the document title according to the route segment

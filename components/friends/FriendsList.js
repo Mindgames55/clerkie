@@ -24,8 +24,8 @@ const initialFilters = [
 
 export default function FriendsList({children}) {
     const targetRef = useRef(null)
-    const isIntersecting = useIntersectionObserver(targetRef?.current);
     const {friends, getFriends, loading, done, sliceFriends } = useFriends()
+    const isIntersecting = useIntersectionObserver(targetRef?.current, done);
     const page = useRef(1)
     const [filters, setFilters] = useState(initialFilters);
     const noFilterLoadedFriendsMark = useRef(0);
@@ -53,7 +53,7 @@ export default function FriendsList({children}) {
         })))
         // we also want to strip all the loaded data with a particular filter
         // because upon clearing all filters we want to be able the FE "recovers" the lost data when filtering
-        sliceFriends(noFilterLoadedFriendsMark)
+        sliceFriends(noFilterLoadedFriendsMark.current)
     }
 
     if (shouldLoadMore) {
@@ -76,18 +76,16 @@ export default function FriendsList({children}) {
                 {!friends.length && children}
                 {visibleFriends.map(friend => <Friend friend={friend} key={friend.id}/>)}
                 {/* if unmounted the useEffect hook on useIntersectionObserver will run and disconnect the observer */}
-                {!done
-                   ? <div ref={targetRef} className={loaderStyles['loader-container']}>
-                            <Image
-                                className={loaderStyles.image}
-                                src="/contact_placeholder.svg"
-                                width={1050}
-                                height={114}
-                                alt="Loading"
-                            />
-                    </div>
-                    : <p className={styles['no-results']}>No more results</p>
-                }
+                <div ref={targetRef} className={`${loaderStyles['loader-container']}${done ? ' hidden' : ''}`}>
+                    <Image
+                        className={loaderStyles.image}
+                        src="/contact_placeholder.svg"
+                        width={1050}
+                        height={114}
+                        alt="Loading"
+                    />
+                </div>
+                {done && <p className={styles['no-results']}>No more results</p>}
             </ul>
         </div>
     )

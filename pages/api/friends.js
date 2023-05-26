@@ -21,8 +21,8 @@ export default async function handler(req, res) {
   const start = pageNumber * limitNumber;
   const end = start + limitNumber;
   const data = JSON.parse(fileContents);
-  const areThereResultsLeft = end < data.length;
   const filteredData = filterData(status, data);
+  const areThereResultsLeft = end < filteredData.length;
   res.status(200).json({
     friends: filteredData.slice(start, end),
     done: !areThereResultsLeft
