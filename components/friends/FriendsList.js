@@ -45,10 +45,10 @@ export default function FriendsList({children}) {
     }
 
     function clearFilters() {
-        setFilters.map(filter => ({
+        setFilters(filters.map(filter => ({
             ...filter,
             applied: false
-        }))
+        })))
     }
 
     if (shouldLoadMore) {

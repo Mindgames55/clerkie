@@ -70,7 +70,13 @@ export default function Dropdown({filters, isVisible, submitFilters, numberOfAct
                         </li>
                     ))}
                 </ul>
-                <button className={styles.apply} onClick={() => {submitFilters(filtersChecked)}}>Apply</button>
+                <button className={styles.apply}
+                        onClick={() => {
+                                submitFilters(filtersChecked)
+                                toggleVisibility()
+                            }}>
+                            Apply
+                </button>
             </div>
         </div>
     )
