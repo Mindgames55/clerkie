@@ -13,9 +13,13 @@ exports[`renders Dropdown correctly 1`] = `
       >
         <button
           class="clear"
+          disabled=""
         >
           Clear all
         </button>
+        <span>
+          3
+        </span>
       </div>
       <div
         class="box"
@@ -50,26 +54,16 @@ exports[`renders Dropdown correctly 1`] = `
         <li
           class="option"
         >
-          <span
+          <label
             class="option-copy"
+            for="close"
           >
             Close Friends
-          </span>
+          </label>
           <input
             class="checkbox"
-            type="checkbox"
-          />
-        </li>
-        <li
-          class="option"
-        >
-          <span
-            class="option-copy"
-          >
-            Super Close Friends
-          </span>
-          <input
-            class="checkbox"
+            id="close"
+            name="close"
             type="checkbox"
           />
         </li>
@@ -79,6 +73,113 @@ exports[`renders Dropdown correctly 1`] = `
       >
         Apply
       </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders Filter correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="controls"
+    >
+      <button
+        aria-label="filter by status"
+        class="active-filter"
+      >
+        <span />
+        <span
+          class="filter-number"
+        >
+          3
+        </span>
+      </button>
+      <span
+        class="separator"
+      >
+        |
+      </span>
+      <button
+        class="clear"
+      >
+        Clear all
+      </button>
+    </div>
+    <div
+      class="container hidden"
+    >
+      <header
+        class="header"
+      >
+        <div
+          class="box"
+        >
+          <button
+            class="clear"
+            disabled=""
+          >
+            Clear all
+          </button>
+          <span>
+            3
+          </span>
+        </div>
+        <div
+          class="box"
+        >
+          <span
+            class="title"
+          >
+            Filter
+          </span>
+        </div>
+        <div
+          class="box"
+        >
+          <button
+            aria-label="close"
+          >
+            <span />
+          </button>
+        </div>
+      </header>
+      <div
+        class="filter-container"
+      >
+        <p
+          class="status-title"
+        >
+          Friend Status
+        </p>
+        <ul
+          class="options"
+        >
+          <li
+            class="option"
+          >
+            <label
+              class="option-copy"
+              for="close"
+            >
+              Close Friends
+            </label>
+            <input
+              class="checkbox"
+              id="close"
+              name="close"
+              type="checkbox"
+            />
+          </li>
+        </ul>
+        <button
+          class="apply"
+        >
+          Apply
+        </button>
+      </div>
     </div>
   </div>
 </div>

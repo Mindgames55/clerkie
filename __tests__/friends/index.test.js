@@ -8,6 +8,14 @@ jest.mock('../../components/friends/ServerFriendsList', () => () => {
   ReactComponent.displayName = 'ReactComponentMock'
 })
 
+jest.mock('../../components/hooks/useIntersectionObserver.js')
+jest.mock('../../components/hooks/useFriends.js', () => () => ({
+  friends: [],
+  loading: false,
+  getFriends: jest.fn()
+}))
+
+
 describe('Friends', () => {
   it('renders correctly', async () => {
     const { container } = render(<Friends />);

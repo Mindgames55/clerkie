@@ -14,7 +14,6 @@
 
 .button {
     border-radius: 30px;
-    background-color: transparent;
     padding: 8px 18px;
     display: flex;
     align-items: center;
@@ -26,8 +25,20 @@
     border: 1px solid #ABABAB;
 }
 
+.active-filter {
+    composes: filter;
+    composes: button-active from '../../common/MenuItem.module.css';
+    /* not removing border to avoid 1px jump */
+    border-color: transparent;
+}
+
 .separator {
     composes: disable;
     margin-left: 15px;
     align-self: center;
+}
+
+.filter-number {
+    font-weight: 600;
+    margin-left: 10px
 }

@@ -19,7 +19,7 @@ exports[`renders SideMenu correctly 1`] = `
       <ul>
         <li>
           <a
-            class="active"
+            class="item-active"
             href="/"
           >
             <span />

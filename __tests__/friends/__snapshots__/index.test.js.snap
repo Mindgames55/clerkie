@@ -5,34 +5,126 @@ exports[`Friends renders correctly 1`] = `
   <div
     class="container"
   >
-    <ul
-      class="container"
-    >
-      <li
+    <div>
+      <div
         class="container"
       >
-        <span
-          class="name"
+        <div
+          class="controls"
         >
-          Jhon Smith
-        </span>
-        <span
-          class="close"
-        >
-          Close Friends
-        </span>
-        <span
-          class="metadata"
-        >
-          <span
-            class="email"
+          <button
+            aria-label="filter by status"
+            class="filter"
           >
-            email@gmail.com
+            <span />
+          </button>
+          <span
+            class="separator"
+          >
+            |
           </span>
-          <span />
-        </span>
-      </li>
-    </ul>
+          <button
+            class="clear"
+            disabled=""
+          >
+            Clear all
+          </button>
+        </div>
+        <div
+          class="container hidden"
+        >
+          <header
+            class="header"
+          >
+            <div
+              class="box"
+            >
+              <button
+                class="clear"
+                disabled=""
+              >
+                Clear all
+              </button>
+            </div>
+            <div
+              class="box"
+            >
+              <span
+                class="title"
+              >
+                Filter
+              </span>
+            </div>
+            <div
+              class="box"
+            >
+              <button
+                aria-label="close"
+              >
+                <span />
+              </button>
+            </div>
+          </header>
+          <div
+            class="filter-container"
+          >
+            <p
+              class="status-title"
+            >
+              Friend Status
+            </p>
+            <ul
+              class="options"
+            >
+              <li
+                class="option"
+              >
+                <label
+                  class="option-copy"
+                  for="close"
+                >
+                  Close Friends
+                </label>
+                <input
+                  class="checkbox"
+                  id="close"
+                  name="close"
+                  type="checkbox"
+                />
+              </li>
+              <li
+                class="option"
+              >
+                <label
+                  class="option-copy"
+                  for="super-close"
+                >
+                  Super Close Friends
+                </label>
+                <input
+                  class="checkbox"
+                  id="super-close"
+                  name="super-close"
+                  type="checkbox"
+                />
+              </li>
+            </ul>
+            <button
+              class="apply"
+            >
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <div>
+          <span
+            class="loader"
+          />
+        </div>
+      </ul>
+    </div>
   </div>
 </div>
 `;

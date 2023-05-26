@@ -10,9 +10,14 @@ exports[`renders Filter correctly 1`] = `
     >
       <button
         aria-label="filter by status"
-        class="filter"
+        class="active-filter"
       >
         <span />
+        <span
+          class="filter-number"
+        >
+          3
+        </span>
       </button>
       <span
         class="separator"
@@ -36,9 +41,13 @@ exports[`renders Filter correctly 1`] = `
         >
           <button
             class="clear"
+            disabled=""
           >
             Clear all
           </button>
+          <span>
+            3
+          </span>
         </div>
         <div
           class="box"
@@ -73,26 +82,16 @@ exports[`renders Filter correctly 1`] = `
           <li
             class="option"
           >
-            <span
+            <label
               class="option-copy"
+              for="close"
             >
               Close Friends
-            </span>
+            </label>
             <input
               class="checkbox"
-              type="checkbox"
-            />
-          </li>
-          <li
-            class="option"
-          >
-            <span
-              class="option-copy"
-            >
-              Super Close Friends
-            </span>
-            <input
-              class="checkbox"
+              id="close"
+              name="close"
               type="checkbox"
             />
           </li>

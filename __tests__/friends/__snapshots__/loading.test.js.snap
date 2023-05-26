@@ -5,6 +5,29 @@ exports[`renders Loading correctly 1`] = `
   <div
     class="container"
   >
+    <div
+      class="container"
+    >
+      <div
+        class="controls"
+      >
+        <button
+          class="filter"
+        >
+          <span />
+        </button>
+        <span
+          class="separator"
+        >
+          |
+        </span>
+        <button
+          class="clear"
+        >
+          Clear all
+        </button>
+      </div>
+    </div>
     <span
       class="loader"
     />
