@@ -51,7 +51,7 @@ export default function FriendsList({children}) {
         })))
     }
 
-    if (false) {
+    if (shouldLoadMore) {
         getFriends(page.current, filters);
         page.current++;
     }
